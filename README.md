@@ -21,7 +21,7 @@ pip install requests mysql-connector-python
 3. Запустите скрипт:
 
 ```bash
-python имя_вашего_скрипта.py
+python app.py
 ```
 
 Скрипт начнет получение данных о фильмах из Kinopoisk API и сохранение их в базе данных MySQL.
