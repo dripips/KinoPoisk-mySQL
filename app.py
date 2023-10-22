@@ -10,9 +10,10 @@ def get_movie_data(kinopoisk_id, api_key):
 
     # Используем параметр stream для получения сырых данных
     response = requests.get(api_url, headers=headers)
-    print(response)
+    #print(response)
     if response.status_code == 200:
-        print(response.json())
+        #print(response.json())
+        print(f"Удалось получить данные для kinopoiskId {kinopoisk_id}")
         return response.json()
 
     else:
@@ -67,7 +68,7 @@ def insert_movie_data(movie_data, cursor):
         json.dumps([{"name": genre["name"]} for genre in movie_data.get("genres", [])]) if "genres" in movie_data else None,
         json.dumps([{"name": country["name"]} for country in movie_data.get("countries", [])]) if "countries" in movie_data else None,
         json.dumps([{
-            "id": person["id"],
+            "id": person.get("id", None),
             "photo": person.get("photo", None),
             "name": person.get("name", None),
             "enName": person.get("enName", None),
